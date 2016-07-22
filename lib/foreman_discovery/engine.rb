@@ -24,7 +24,7 @@ module ForemanDiscovery
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
     end
 
-    initializer 'foreman_discovery.register_plugin', :after=> :finisher_hook do |app|
+    initializer 'foreman_discovery.register_plugin', :before => :finisher_hook do |app|
       Foreman::Plugin.register :foreman_discovery do
         requires_foreman '>= 1.4'
 
